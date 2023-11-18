@@ -10,3 +10,5 @@ pytz==2023.3
 sqlparse==0.4.4
 requests
 firebase-admin
+django-rest-swagger
+drf-yasg

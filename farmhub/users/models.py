@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
+
 ROLES = (
     ('AGRICULTURIST', 'agriculturist'),
     ('MECHANIZER', 'mechanizer'),
@@ -25,3 +26,15 @@ class User(AbstractUser):
     class Meta:
         verbose_name = 'User'
         verbose_name_plural = 'Users'
+
+
+class FcmToken(models.Model):
+    token = models.CharField(
+        verbose_name='fcm_token',
+        max_length=250
+    )
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        verbose_name='user'
+    )

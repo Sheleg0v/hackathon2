@@ -49,6 +49,13 @@ STATUSES = (
 )
 
 
+class Plant(models.Model):
+    name = models.CharField(
+        verbose_name='plant_name',
+        max_length=250
+    )
+
+
 class Task(models.Model):
     add_date = models.DateTimeField(verbose_name='AddDate')
     commit_date = models.DateTimeField(verbose_name='CommitDate')
@@ -103,6 +110,13 @@ class Task(models.Model):
     )
     comment = models.TextField(
         verbose_name='comment',
+        null=True,
+        blank=True
+    )
+    plant = models.ForeignKey(
+        Plant,
+        verbose_name='plant',
+        on_delete=models.SET_NULL,
         null=True,
         blank=True
     )
