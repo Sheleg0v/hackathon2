@@ -1,10 +1,8 @@
 import random
 
 from rest_framework.authtoken.models import Token
-import firebase_admin
 import requests
 from django.contrib.auth import get_user_model
-from firebase_admin import credentials, messaging
 from rest_framework import serializers
 from tasktracker.models import Location, Machine, Operation, Task, Unit, Plant
 from users.models import FcmToken
@@ -135,35 +133,6 @@ class FcmTokenSerializer(serializers.ModelSerializer):
     
     def to_representation(self, instance):
         return {}
-
-
-def fb_test():
-    message = messaging.Message(
-        notification=messaging.Notification(
-            title='newes title',
-            body='newes body'
-        ),
-        android=messaging.AndroidConfig(
-            priority='normal',
-            notification=messaging.AndroidNotification(
-                icon='stock_ticker_update',
-                color='#f45342'
-            )
-        ),
-        apns=messaging.APNSConfig(
-            payload=messaging.APNSPayload(
-                aps=messaging.Aps(sound='default')
-            )
-        ),
-        token='eynHrwykS-ayyQXFXpsmU0:APA91bHCx3xFfrH5OhTAg_0h77pa3n6UfuQ8LfYcYZzj3YdHyGNt5EU0oDQXk6FIgtR84SE9m0ZJwWkNDzYwtoebJyXJXaZyxZ-jE8-hn6tVm5JI-scanzWObteNZJ47sbBabo5tBpFn',
-        data={'bb':'gg'}
-    )
-    try:
-        cred = credentials.Certificate("hackathon-c483e-firebase-adminsdk-lkcji-2a32a0cc39.json")
-        firebase_admin.initialize_app(cred)
-        messaging.send(message)
-    except:
-        messaging.send(message)
 
 
 class RfidSerializer(serializers.ModelSerializer):
