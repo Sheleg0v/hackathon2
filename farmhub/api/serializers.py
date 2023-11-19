@@ -128,7 +128,7 @@ class FcmTokenSerializer(serializers.ModelSerializer):
     def create(self, validated_data, **kwargs):
         user = self.context.get('request').user
         token = validated_data.pop('token')
-        instance = FcmToken.objects.create(user=user, token=token)
+        instance = FcmToken.objects.get_or_create(user=user, token=token)
         return instance
     
     def to_representation(self, instance):

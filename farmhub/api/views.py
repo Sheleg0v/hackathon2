@@ -6,6 +6,7 @@ from users.models import FcmToken
 from django.shortcuts import get_object_or_404
 import firebase_admin
 from firebase_admin import credentials, messaging
+from django.shortcuts import HttpResponse
 
 from .serializers import (
     TaskSerializer,
@@ -122,6 +123,13 @@ class FcmTokenViewSet(
     queryset = FcmToken.objects.all()
     serializer_class = FcmTokenSerializer
     permission_classes = (permissions.IsAuthenticated,)
+
+    def create(self, request, *args, **kwargs):
+        token = request.data.get('token')
+        tokens = FcmToken.objects.filter(token=token)
+        if len(tokens) != 0:
+            return HttpResponse()
+        return super().create(request, *args, **kwargs)
 
 
 class PlantViewSet(

@@ -31,7 +31,8 @@ class User(AbstractUser):
 class FcmToken(models.Model):
     token = models.CharField(
         verbose_name='fcm_token',
-        max_length=250
+        max_length=250,
+        unique=True
     )
     user = models.ForeignKey(
         User,
