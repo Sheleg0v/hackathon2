@@ -18,6 +18,10 @@ class OperationAdmin(admin.ModelAdmin):
     list_display = ('type', 'speed', 'depth', 'flowrate')
 
 
+class PlantAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+
+
 class TaskAdmin(admin.ModelAdmin):
     list_display = (
         'add_date',
@@ -40,3 +44,4 @@ admin.site.register(Unit, UnitAdmin)
 admin.site.register(Location, LocationAdmin)
 admin.site.register(Operation, OperationAdmin)
 admin.site.register(Task, TaskAdmin)
+admin.site.register(Plant, PlantAdmin)

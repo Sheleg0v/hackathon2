@@ -34,9 +34,21 @@ class Operation(models.Model):
         choices=TYPES,
         max_length=255
     )
-    speed = models.FloatField(verbose_name='speed')
-    depth = models.FloatField(verbose_name='depth')
-    flowrate = models.FloatField(verbose_name='flowrate')
+    speed = models.FloatField(
+        verbose_name='speed',
+        null=True,
+        blank=True
+    )
+    depth = models.FloatField(
+        verbose_name='depth',
+        null=True,
+        blank=True
+    )
+    flow_rate = models.FloatField(
+        verbose_name='flowrate',
+        null=True,
+        blank=True
+    )
 
 
 STATUSES = (
