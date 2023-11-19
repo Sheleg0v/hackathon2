@@ -106,7 +106,10 @@ class TaskViewSet(viewsets.ModelViewSet):
                 firebase_admin.initialize_app(cred)
                 messaging.send(message)
             except:
-                messaging.send(message)
+                try:
+                    messaging.send(message)
+                except:
+                    pass
 
 
 class UserViewSet(
