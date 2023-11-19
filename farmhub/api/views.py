@@ -78,26 +78,29 @@ class TaskViewSet(viewsets.ModelViewSet):
     def send_push(self, user, title, body):
         tokens = FcmToken.objects.filter(user=user)
         for token in tokens:
-            message = messaging.Message(
-                notification=messaging.Notification(
-                    title=title,
-                    body=body
-                ),
-                android=messaging.AndroidConfig(
-                    priority='normal',
-                    notification=messaging.AndroidNotification(
-                        icon='stock_ticker_update',
-                        color='#f45342'
-                    )
-                ),
-                apns=messaging.APNSConfig(
-                    payload=messaging.APNSPayload(
-                        aps=messaging.Aps(sound='default')
-                    )
-                ),
-                token=token.token,
-                data={'bb':'gg'}
-            )
+            try:
+                message = messaging.Message(
+                    notification=messaging.Notification(
+                        title=title,
+                        body=body
+                    ),
+                    android=messaging.AndroidConfig(
+                        priority='normal',
+                        notification=messaging.AndroidNotification(
+                            icon='stock_ticker_update',
+                            color='#f45342'
+                        )
+                    ),
+                    apns=messaging.APNSConfig(
+                        payload=messaging.APNSPayload(
+                            aps=messaging.Aps(sound='default')
+                        )
+                    ),
+                    token=token.token,
+                    data={'bb':'gg'}
+                )
+            except:
+                continue
             try:
                 cred = credentials.Certificate("hackathon-c483e-firebase-adminsdk-lkcji-2a32a0cc39.json")
                 firebase_admin.initialize_app(cred)
