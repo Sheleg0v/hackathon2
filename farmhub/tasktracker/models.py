@@ -55,6 +55,7 @@ STATUSES = (
     ('OPEN', 'open'),
     ('MACHINE_INSPECTION', 'machine_inspection'),
     ('IN_PROGRESS', 'in_progres'),
+    ('ON_MY_WAY', 'on_my_way'),
     ('CLOSED', 'closed'),
     ('PAUSED', 'paused'),
     ('DONE', 'done'),
