@@ -8,16 +8,25 @@ class Machine(models.Model):
     name = models.CharField(verbose_name='name', max_length=255)
     registration_number = models.CharField(verbose_name='registration_number', max_length=255)
 
+    def __str__(self):
+        return self.name
+
 
 class Unit(models.Model):
     name = models.CharField(verbose_name='name', max_length=255)
     serial_number = models.CharField(verbose_name='serial_number', max_length=255)
+
+    def __str__(self):
+        return self.name
 
 
 class Location(models.Model):
     name = models.CharField(verbose_name='name', max_length=255)
     lat = models.FloatField(verbose_name='lat')
     lng = models.FloatField(verbose_name='lng')
+
+    def __str__(self):
+        return self.name
 
 
 TYPES = (
@@ -49,6 +58,9 @@ class Operation(models.Model):
         null=True,
         blank=True
     )
+
+    def __str__(self):
+        return self.type
 
 
 STATUSES = (

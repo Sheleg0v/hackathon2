@@ -27,6 +27,9 @@ class User(AbstractUser):
         verbose_name = 'User'
         verbose_name_plural = 'Users'
 
+    def __str__(self):
+        return self.username
+
 
 class FcmToken(models.Model):
     token = models.CharField(
