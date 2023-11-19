@@ -15,7 +15,7 @@ class LocationAdmin(admin.ModelAdmin):
 
 
 class OperationAdmin(admin.ModelAdmin):
-    list_display = ('type', 'speed', 'depth', 'flowrate')
+    list_display = ('type', 'speed', 'depth', 'flow_rate')
 
 
 class PlantAdmin(admin.ModelAdmin):
